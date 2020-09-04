@@ -1,0 +1,53 @@
+@import '../../../../variables.scss';
+
+.usersList {
+  padding: 20px;
+  box-shadow: 0 0 2px $main-color;
+  border-radius: 0 4px 4px 4px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: $main-color-lighter;
+}
+
+.usersList__item {
+  padding: 10px;
+  width: 44%;
+  min-width: 320px;
+  box-shadow: 0 0 2px $main-color;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  background-color: rgb(255, 250, 192);
+  transition: all 0.2s linear;
+
+  &:hover {
+    box-shadow: 0 0 6px white;
+    background-color: rgb(255, 253, 236);
+  }
+}
+
+.usersList__link {
+  color: $main-color;
+  text-decoration: none;
+}
+
+.usersList__imgMarkWrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+
+.usersList__imgBox {
+  border-radius: 50%;
+}
+
+.usersList__img {
+  display: block;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.usersList__info {
+  font-weight: bold;
+}

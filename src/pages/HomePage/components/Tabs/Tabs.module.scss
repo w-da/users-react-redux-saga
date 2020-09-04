@@ -1,0 +1,16 @@
+@import '../../../../variables.scss';
+
+.tab {
+  border: none;
+  background-color: darkgray;
+  color: white;
+  padding: 10px 40px;
+  border-radius: 8px 8px 0 0;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s linear;
+
+  &:disabled {
+    background-color: $main-color-lighter;
+  }
+}

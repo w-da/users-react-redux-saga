@@ -1,0 +1,17 @@
+@import '../../variables.scss';
+
+.footer {
+  width: 100%;
+  background-color: $main-color;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  padding: 20px;
+  box-shadow: 0 0 4px $main-color;
+}
+
+.footer__info {
+  font-size: 20px;
+  text-align: center;
+  font-family: $main-font-family;
+}

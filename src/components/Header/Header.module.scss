@@ -1,0 +1,17 @@
+@import '../../variables.scss';
+
+.header {
+  background-color: palegoldenrod;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 0 4px $main-color;
+  font-family: $main-font-family;
+}
+
+.header__clockUsersBox {
+  color: $main-color;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
