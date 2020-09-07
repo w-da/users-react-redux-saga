@@ -29,3 +29,13 @@ export const getUsersFailure = () => {
     type: actionTypes.GET_USERS_FAILURE,
   };
 };
+
+export const updateUser = (userId, markedTime) => {
+  return {
+    type: actionTypes.UPDATE_USER,
+    payload: {
+      userId,
+      markedTime,
+    },
+  };
+};

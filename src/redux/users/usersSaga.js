@@ -28,6 +28,9 @@ async function fetchUsers() {
   return data;
 }
 
+// Some of users return from server without an ID.
+// This function creates ID's for them.
+
 function fixUsersId(users) {
   return users.map(user => {
     if (!user.id.value) {

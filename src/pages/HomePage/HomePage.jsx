@@ -1,18 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { getUsers } from '../../redux/users/userActions';
+import selectors from '../../redux/selectors';
 import { Tabs } from './components/Tabs';
 import { UsersList } from './components/UsersList';
+import { MarkedUsersList } from './components/MarkedUsersList';
+import { Loader } from '../../components/Loader';
 
 import styles from './HomePage.module.scss';
 
-const Home = ({ onGetUsers }) => {
+export const HomePage = ({ location }) => {
   const [showAllUsers, setShowAllUsers] = useState(true);
+  const users = useSelector(state => selectors.getUsers(state));
+  const isLoading = useSelector(state => selectors.getIsLoading(state));
+  const hasError = useSelector(state => selectors.getError(state));
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    onGetUsers();
-  }, [onGetUsers]);
+    if (!users.length) {
+      dispatch(getUsers(1));
+      return;
+    }
+
+    return;
+  }, [dispatch, users]);
 
   function changeUsersDisplay() {
     setShowAllUsers(prevValue => !prevValue);
@@ -20,16 +32,22 @@ const Home = ({ onGetUsers }) => {
 
   return (
     <section className={styles.homePage}>
-      <Tabs onChangeUsersDisplay={changeUsersDisplay} disabled={showAllUsers} />
-      {showAllUsers && <UsersList />}
+      {!users.length && isLoading && <Loader />}
+      {users.length !== 0 && (
+        <Tabs
+          onChangeUsersDisplay={changeUsersDisplay}
+          disabled={showAllUsers}
+        />
+      )}
+      {showAllUsers && (
+        <UsersList
+          location={location}
+          users={users}
+          isLoading={isLoading}
+          hasError={hasError}
+        />
+      )}
+      {!showAllUsers && <MarkedUsersList location={location} />}
     </section>
   );
 };
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onGetUsers: () => dispatch(getUsers(1)),
-  };
-};
-
-export const HomePage = connect(null, mapDispatchToProps)(Home);

@@ -1,0 +1,20 @@
+@import '../../variables.scss';
+
+.notFoundPage {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  color: $main-color;
+  font-family: $main-font-family;
+}
+
+.notFoundPage__link {
+  font-size: 30px;
+  color: $main-color;
+  transition: all 0.2s linear;
+
+  &:hover {
+    text-shadow: 0 0 2px $main-color;
+  }
+}

@@ -1,5 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+
+import selectors from '../../../../redux/selectors';
 
 export const MarkedUsersQuantity = () => {
-  return <h2>Marked Users: 0</h2>;
+  const quantity = useSelector(state =>
+    selectors.getMarkedUsersQuantity(state)
+  );
+
+  return <h2>Marked Users: {quantity}</h2>;
 };

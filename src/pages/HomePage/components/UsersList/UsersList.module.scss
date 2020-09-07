@@ -26,9 +26,16 @@
   }
 }
 
+.usersList__item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
 .usersList__link {
   color: $main-color;
   text-decoration: none;
+  width: 100%;
 }
 
 .usersList__imgMarkWrapper {
@@ -50,4 +57,29 @@
 
 .usersList__info {
   font-weight: bold;
+}
+
+.usersList__markBtn {
+  cursor: pointer;
+}
+
+.usersList__loadBtn {
+  cursor: pointer;
+  outline: none;
+  background-color: #3aab58;
+  color: white;
+  border: none;
+  padding: 20px 40px;
+  transition: all 0.2s linear;
+  border-radius: 4px;
+
+  &:hover {
+    box-shadow: 0 0 4px $main-color;
+  }
+
+  &:disabled {
+    background-color: $main-color-lighter;
+    color: gray;
+    cursor: progress;
+  }
 }

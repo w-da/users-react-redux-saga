@@ -1,26 +1,11 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { updateUser } from '../../../../redux/users/userActions';
-import { getCurrentTime } from './helpers/getCurrentTime';
+import styles from '../UsersList/UsersList.module.scss';
 
-import styles from './UsersList.module.scss';
-
-export const UserListItem = ({ user, location }) => {
-  const dispatch = useDispatch();
-
+export const MarkedUsersListItem = ({ user, location }) => {
   return (
     <li className={styles.usersList__item}>
-      <button
-        className={styles.usersList__markBtn}
-        type="button"
-        title="Mark user"
-        onClick={() => dispatch(updateUser(user.id.value, getCurrentTime()))}
-        disabled={user.markedTime}
-      >
-        &#10003;
-      </button>
       <Link
         to={{
           pathname: `/user/${user.id.value}`,

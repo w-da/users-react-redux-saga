@@ -1,0 +1,61 @@
+@import '../../variables.scss';
+
+.details {
+  padding: 20px 10px;
+  font-family: $main-font-family;
+}
+
+.details__backBtn {
+  text-decoration: none;
+  display: inline-block;
+  font-size: 60px;
+  color: $main-color-lighter;
+  margin-bottom: 20px;
+  transition: all 0.2s linear;
+  background-color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    text-shadow: 0 0 4px $main-color-lighter;
+  }
+}
+
+.details__title {
+  max-width: 640px;
+  margin: 0 auto;
+  color: white;
+  background-color: $main-color-lighter;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 0 4px $main-color;
+  padding: 4px 10px;
+}
+
+.details__container {
+  max-width: 640px;
+  margin: 0 auto;
+  min-width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: palegoldenrod;
+  box-shadow: 0 0 4px $main-color;
+  padding: 20px;
+  border-radius: 0 0 8px 8px;
+}
+
+.details__info {
+  font-size: 20px;
+  color: $main-color;
+  margin-bottom: 6px;
+}
+
+.details__img {
+  box-shadow: 0 0 4px $main-color;
+}
+
+.details__info_bold {
+  font-weight: bold;
+}
