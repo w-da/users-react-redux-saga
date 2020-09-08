@@ -4,6 +4,8 @@ const initialState = {
   isLoading: false,
   users: [],
   hasError: false,
+  page: 1,
+  filterValue: '',
 };
 
 export const usersReducer = (state = initialState, action) => {
@@ -20,6 +22,7 @@ export const usersReducer = (state = initialState, action) => {
         isLoading: false,
         users: [...state.users, ...action.payload.users],
         hasError: false,
+        page: state.page + 1,
       };
     case actionTypes.GET_USERS_FAILURE:
       return {
@@ -35,6 +38,12 @@ export const usersReducer = (state = initialState, action) => {
           action.payload.userId,
           action.payload.markedTime
         ),
+      };
+
+    case actionTypes.CHANGE_FILTER:
+      return {
+        ...state,
+        filterValue: action.payload.value,
       };
     default:
       return state;

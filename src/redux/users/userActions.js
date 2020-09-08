@@ -39,3 +39,11 @@ export const updateUser = (userId, markedTime) => {
     },
   };
 };
+export const changeFilter = value => {
+  return {
+    type: actionTypes.CHANGE_FILTER,
+    payload: {
+      value,
+    },
+  };
+};

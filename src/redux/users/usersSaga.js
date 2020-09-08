@@ -5,18 +5,14 @@ import { v4 as uuid } from 'uuid';
 import actionTypes from '../actionTypes';
 import { getUsersStart, getUsersSuccess, getUsersFailure } from './userActions';
 
-function* workerUsers(action) {
-  console.log(action);
+function* workerUsers() {
   yield put(getUsersStart());
   try {
     const { results } = yield call(fetchUsers);
     const usersWithFixedIds = yield call(fixUsersId, results);
 
-    console.log(usersWithFixedIds);
-
-    yield put(getUsersSuccess(results));
+    yield put(getUsersSuccess(usersWithFixedIds));
   } catch (error) {
-    console.log('error is : ', error);
     yield put(getUsersFailure());
   }
 }

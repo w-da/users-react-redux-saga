@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import { getUsers } from '../../../../redux/users/userActions';
@@ -9,13 +9,11 @@ import { Loader } from '../../../../components/Loader';
 
 import styles from './UsersList.module.scss';
 
-export const UsersList = ({ location, users, isLoading, hasError }) => {
-  const [page, setPage] = useState(2);
+export const UsersList = ({ location, users, isLoading, hasError, page }) => {
   const dispatch = useDispatch();
 
   function loadMoreHandler() {
     dispatch(getUsers(page));
-    setPage(prevPage => prevPage + 1);
   }
 
   return (

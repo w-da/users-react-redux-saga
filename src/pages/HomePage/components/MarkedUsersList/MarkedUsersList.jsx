@@ -8,13 +8,16 @@ import styles from '../UsersList/UsersList.module.scss';
 
 export const MarkedUsersList = ({ location }) => {
   const markedUsers = useSelector(state => selectors.getMarkedUsers(state));
+  const filteredMarkedUsers = useSelector(state =>
+    selectors.getFilteredMarkedUsers(state)
+  );
 
   return (
     <div>
       {!markedUsers.length && <p>You haven't marked any users yet</p>}
       {markedUsers.length !== 0 && (
         <ul className={styles.usersList}>
-          {markedUsers.map(user => (
+          {filteredMarkedUsers.map(user => (
             <MarkedUsersListItem
               user={user}
               key={user.id.value}
