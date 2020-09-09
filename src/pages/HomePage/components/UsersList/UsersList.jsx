@@ -18,17 +18,13 @@ export const UsersList = ({ location, users, isLoading, hasError, page }) => {
 
   return (
     <div>
-      {users.length !== 0 && (
-        <ul className={styles.usersList}>
-          {users.map(user => (
-            <UserListItem key={user.id.value} user={user} location={location} />
-          ))}
-        </ul>
-      )}
-      {users.length !== 0 && (
-        <LoadMoreBtn onLoadMore={loadMoreHandler} isLoading={isLoading} />
-      )}
-      {users.length !== 0 && isLoading && <Loader />}
+      <ul className={styles.usersList}>
+        {users.map(user => (
+          <UserListItem key={user.id.value} user={user} location={location} />
+        ))}
+      </ul>
+      <LoadMoreBtn onLoadMore={loadMoreHandler} isLoading={isLoading} />
+      {isLoading && <Loader />}
       {hasError && <ErrorMessage />}
     </div>
   );

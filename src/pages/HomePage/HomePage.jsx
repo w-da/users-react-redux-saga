@@ -35,27 +35,29 @@ export const HomePage = ({ location }) => {
     <section className={styles.homePage}>
       {!users.length && isLoading && <Loader />}
       {users.length !== 0 && (
-        <div className={styles.tabsInputWrapper}>
-          <Tabs
-            onChangeUsersDisplay={changeUsersDisplay}
-            disabled={showAllUsers}
-          />
-          <FilterInput />
-        </div>
+        <>
+          <div className={styles.tabsInputWrapper}>
+            <Tabs
+              onChangeUsersDisplay={changeUsersDisplay}
+              disabled={showAllUsers}
+            />
+            <FilterInput />
+          </div>
+          {showAllUsers && (
+            <UsersList
+              location={location}
+              users={filteredUsers}
+              isLoading={isLoading}
+              hasError={hasError}
+              page={page}
+            />
+          )}
+          {!showAllUsers && <MarkedUsersList location={location} />}
+        </>
       )}
       {filteredUsers.length === 0 && users.length !== 0 && (
         <p className={styles.homePage__info}>No matches</p>
       )}
-      {showAllUsers && (
-        <UsersList
-          location={location}
-          users={filteredUsers}
-          isLoading={isLoading}
-          hasError={hasError}
-          page={page}
-        />
-      )}
-      {!showAllUsers && <MarkedUsersList location={location} />}
     </section>
   );
 };

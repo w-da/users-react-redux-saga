@@ -83,3 +83,9 @@
     cursor: progress;
   }
 }
+
+.usersList__message {
+  background-color: $main-color-lighter;
+  color: white;
+  padding: 20px;
+}

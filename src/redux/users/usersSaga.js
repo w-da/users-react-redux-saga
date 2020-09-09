@@ -5,10 +5,12 @@ import { v4 as uuid } from 'uuid';
 import actionTypes from '../actionTypes';
 import { getUsersStart, getUsersSuccess, getUsersFailure } from './userActions';
 
-function* workerUsers() {
+function* workerUsers(action) {
+  const { page } = action.payload;
+
   yield put(getUsersStart());
   try {
-    const { results } = yield call(fetchUsers);
+    const { results } = yield call(fetchUsers, page);
     const usersWithFixedIds = yield call(fixUsersId, results);
 
     yield put(getUsersSuccess(usersWithFixedIds));
@@ -17,9 +19,9 @@ function* workerUsers() {
   }
 }
 
-async function fetchUsers() {
+async function fetchUsers(page) {
   const { data } = await axios.get(
-    'https://randomuser.me/api/?page=1&results=20'
+    `https://randomuser.me/api/?page=${page}&results=20`
   );
   return data;
 }

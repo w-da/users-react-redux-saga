@@ -14,7 +14,11 @@ export const MarkedUsersList = ({ location }) => {
 
   return (
     <div>
-      {!markedUsers.length && <p>You haven't marked any users yet</p>}
+      {!markedUsers.length && (
+        <p className={styles.usersList__message}>
+          You haven't marked any users yet
+        </p>
+      )}
       {markedUsers.length !== 0 && (
         <ul className={styles.usersList}>
           {filteredMarkedUsers.map(user => (
