@@ -9,7 +9,6 @@ export const FilterInput = () => {
 
   return (
     <DebounceInput
-      // minLength={2}
       debounceTimeout={250}
       onChange={event => dispatch(changeFilter(event.target.value))}
       placeholder="Filter by name"
